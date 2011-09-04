@@ -61,6 +61,9 @@ env.Append(
 if env['PLATFORM'] == 'cygwin':
 	libs += ['node']
 
+if 'CPPPATH' in os.environ:
+  env.Append(CPPPATH = os.environ['CPPPATH'])
+
 if not env.GetOption('clean'):
   conf = Configure(env, custom_tests = {'CheckForNodeJS' : CheckForNodeJS})
   print conf.CheckForNodeJS()
